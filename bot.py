@@ -16,7 +16,7 @@ import hashlib
 import re
 
 # Bot Configuration
-BOT_TOKEN = "8824371818:AAEdoxOd6eu76FZb_Nyjvz-yZtSZ3M1SVuE"
+BOT_TOKEN = "8824371818:AAENU5SvzwrO_UXgOl09v8VvuiZkJhGQ3bI"
 ADMIN_ID = 1655373100
 API_BASE_URL = "https://jiosavanapiryden.vercel.app/api"
 SUPPORT_LINK = "https://t.me/EarnBazaarrr"
@@ -497,7 +497,7 @@ def process_broadcast(message):
     
     for u_id in data["users"]:
         try:
-            bot.send_message(u_id, f"📢 ANNOUNCEMENT\n\n━━━━━━━━━━━━━━━━\n\n{broadcast_text}\n\n━━━━━━━━━━━━━━━━\n\n— @vishalcodeverse")
+            bot.send_message(u_id, f"📢 ANNOUNCEMENT\n\n━━━━━━━━━━━━━━━━\n\n{broadcast_text}\n\n━━━━━━━━━━━━━━━━\n\n— @EarnBazaarrre")
             success += 1
             time.sleep(0.05)
         except Exception as e:
