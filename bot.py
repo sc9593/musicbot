@@ -775,13 +775,26 @@ def share_bot_callback(call):
     bot.answer_callback_query(call.id, "📢 Sharing options...")
     share_command(call.message)
 
-# ==================== MAIN FUNCTION ====================
+# ==================== MAIN FUNCTION & DUMMY SERVER ====================
+from flask import Flask
+import threading
+import os
+
+app = Flask(__name__)
+
+@app.route('/')
+def home():
+    return "Melody Stream Bot is Alive and Running!"
+
+def run_server():
+    port = int(os.environ.get('PORT', 8080))
+    app.run(host='0.0.0.0', port=port)
 
 def main():
     print("=" * 50)
     print("🎵 MELODY STREAM BOT - STARTING UP 🎵")
     print("=" * 50)
-    print(f"👑 Developer: @vishalcodeverse")
+    print(f"👑 Developer: @sumanearningtrick")
     print(f"👑 Admin ID: {ADMIN_ID}")
     print(f"📊 Total Users: {len(data['users'])}")
     print(f"🔍 Total Searches: {data.get('total_searches', 0)}")
@@ -792,6 +805,10 @@ def main():
     print("✅ Admin panel command: /admin")
     print("=" * 50)
     
+    # 1. Start Web Server in background thread (To keep Render happy)
+    threading.Thread(target=run_server).start()
+    
+    # 2. Start Bot
     while True:
         try:
             bot.infinity_polling(timeout=10, long_polling_timeout=5)
